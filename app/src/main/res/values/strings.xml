@@ -4,4 +4,5 @@
     <string name="my_feeds">My feeds</string>
     <string name="rss_feed">RSS feed</string>
     <string name="item_description">Feed item description</string>
+    <string name="add_new_feed_content_description">Add new RSS feed</string>
 </resources>
