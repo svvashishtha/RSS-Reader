@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Rss Reader</string>
+    <string name="add_new_feed">Add new feed</string>
+    <string name="my_feeds">My feeds</string>
+    <string name="rss_feed">RSS feed</string>
+    <string name="item_description">Feed item description</string>
 </resources>
