@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.AddNewFeedFragment">
+    tools:context=".ui.channels.MyChannelsFragment">
 
-    <com.google.android.material.card.MaterialCardView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:id="@+id/add_new_feed_view"
         android:layout_height="match_parent">
-
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="@string/add_new_feed"
+            android:text="@string/my_feeds"
             android:textSize="52sp" />
 
-    </com.google.android.material.card.MaterialCardView>
+    </FrameLayout>
 </layout>

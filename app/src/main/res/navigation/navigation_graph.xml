@@ -7,24 +7,24 @@
 
     <fragment
         android:id="@+id/addNewFeedFragment"
-        android:name="com.rssreader.ui.AddNewFeedFragment"
+        android:name="com.rssreader.ui.addChannel.AddNewChannelFragment"
         android:label="@string/add_new_feed"
-        tools:layout="@layout/fragment_add_new_feed" />
+        tools:layout="@layout/fragment_add_new_channel" />
     <fragment
         android:id="@+id/myFeedsFragment"
-        android:name="com.rssreader.ui.MyFeedsFragment"
+        android:name="com.rssreader.ui.channels.MyChannelsFragment"
         android:label="@string/my_feeds"
-        tools:layout="@layout/fragment_my_feeds" >
+        tools:layout="@layout/fragment_my_channels" >
 
     </fragment>
     <fragment
         android:id="@+id/feedItemDescriptionFragment"
-        android:name="com.rssreader.ui.FeedItemDescriptionFragment"
+        android:name="com.rssreader.ui.itemdescription.FeedItemDescriptionFragment"
         android:label="@string/item_description"
         tools:layout="@layout/fragment_feed_item_description" />
     <fragment
         android:id="@+id/rssFeedFragment"
-        android:name="com.rssreader.ui.RssFeedFragment"
+        android:name="com.rssreader.ui.feed.RssFeedFragment"
         android:label="@string/rss_feed"
         tools:layout="@layout/fragment_rss_feed" />
 
