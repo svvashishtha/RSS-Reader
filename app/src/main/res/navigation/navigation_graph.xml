@@ -13,7 +13,7 @@
     <fragment
         android:id="@+id/myFeedsFragment"
         android:name="com.rssreader.ui.channels.MyChannelsFragment"
-        android:label="@string/my_feeds"
+        android:label="@string/my_channels"
         tools:layout="@layout/fragment_my_channels" >
 
     </fragment>
