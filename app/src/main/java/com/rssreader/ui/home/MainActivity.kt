@@ -11,7 +11,9 @@ import com.rssreader.NavigationGraphDirections
 import com.rssreader.R
 import com.rssreader.databinding.ActivityMainBinding
 import com.rssreader.util.contentView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedListener {
     private val binding: ActivityMainBinding by contentView(R.layout.activity_main)
 
