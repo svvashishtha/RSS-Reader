@@ -9,6 +9,11 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="backgroundColor">@color/backgroundColorDark</item>
+        <item name="strokeColor">@color/strokeColorDark</item>
+        <item name="textColorPrimary">@color/textColorPrimaryDark</item>
+        <item name="textColorSecondary">@color/textColorSecondaryDark</item>
+        <item name="fabColor">@color/fabColorDark</item>
     </style>
 
 </resources>

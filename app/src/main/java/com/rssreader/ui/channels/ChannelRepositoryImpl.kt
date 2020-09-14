@@ -3,10 +3,11 @@ package com.rssreader.ui.channels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.rssreader.data.Channel
+import com.rssreader.data.ChannelDao
 import com.rssreader.data.Image
 import javax.inject.Inject
 
-class ChannelRepositoryImpl @Inject constructor() : MyChannelRepository {
+class ChannelRepositoryImpl @Inject constructor(private val channelDao : ChannelDao) : MyChannelRepository {
     override fun getSuggestedChannels(): LiveData<List<Channel>> {
         val suggestedChannelList = mutableListOf<Channel>()
         suggestedChannelList.add(
@@ -18,7 +19,6 @@ class ChannelRepositoryImpl @Inject constructor() : MyChannelRepository {
                 docs = null,
                 id = 0,
                 channelUrl = "http://www.nasa.gov/rss/dyn/lg_image_of_the_day.rss",
-                items = null,
                 image = null,
                 lastBuildDate = null,
                 ttl = null
@@ -33,7 +33,6 @@ class ChannelRepositoryImpl @Inject constructor() : MyChannelRepository {
                 docs = null,
                 id = 0,
                 channelUrl = "http://www.nasa.gov/rss/dyn/lg_image_of_the_day.rss",
-                items = null,
                 image = Image(
                     url = "https://news.bbcimg.co.uk/nol/shared/img/bbc_news_120x60.gif",
                     title = "BBC News - Home",

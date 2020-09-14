@@ -5,10 +5,14 @@
     </style>
 
     <style name="Theme.RssReader" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="backgroundColor">@color/backgroundColorLight</item>
+        <item name="strokeColor">@color/strokeColorLight</item>
+        <item name="textColorPrimary">@color/textColorPrimaryLight</item>
+        <item name="textColorSecondary">@color/textColorSecondaryLight</item>
+        <item name="fabColor">@color/fabColorLight</item>
     </style>
 
 </resources>

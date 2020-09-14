@@ -3,4 +3,19 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+
+    <!--for light mode-->
+    <color name="backgroundColorLight">#f8f8f8</color>
+    <color name="strokeColorLight">#BFBEBE</color>
+    <color name="textColorPrimaryLight">#000</color>
+    <color name="textColorSecondaryLight">#828282</color>
+    <color name="fabColorLight">#e7e7e7</color>
+
+    <!--For dark mode-->
+    <color name="backgroundColorDark">#494949</color>
+    <color name="strokeColorDark">#fff</color>
+    <color name="textColorPrimaryDark">#fff</color>
+    <color name="textColorSecondaryDark">#f8f8f8</color>
+    <color name="fabColorDark">#666666</color>
 </resources>

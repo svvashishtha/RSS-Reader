@@ -1,15 +1,20 @@
 package com.rssreader.data
 
-data class Channel(
-    val title: String?,
-    val description: String?,
-    val language: String?,
-    val webMaster: String?,
-    val docs: String?,
-    val id: Int,
-    val items: List<FeedItem>?,
-    val image: Image?,
-    val channelUrl: String,
-    val lastBuildDate : String?,
-    val ttl : Int?
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
+class Channel(
+    val title: String? = null,
+    val description: String? = null,
+    val language: String? = null,
+    val webMaster: String? = null,
+    val docs: String? = null,
+
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = -1,
+    val image: Image? = null,
+    val channelUrl: String = "",
+    val lastBuildDate: String? = null,
+    val ttl: Int? = null
 )
