@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/addNewFeedFragment"
         android:name="com.rssreader.ui.addChannel.AddNewChannelFragment"
-        android:label="@string/add_new_feed"
+        android:label="@string/add_new_channel"
         tools:layout="@layout/fragment_add_new_channel" />
     <fragment
         android:id="@+id/myFeedsFragment"

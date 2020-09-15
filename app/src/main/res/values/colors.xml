@@ -1,21 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (c) 2020 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+  in compliance with the License. You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software distributed under the License
+  is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+  or implied. See the License for the specific language governing permissions and limitations under
+  the License.
+  -->
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
 
+    <!--Color palette-->
+    <color name="white_50">#ffffff</color>
 
-    <!--for light mode-->
-    <color name="backgroundColorLight">#f8f8f8</color>
-    <color name="strokeColorLight">#BFBEBE</color>
-    <color name="textColorPrimaryLight">#000</color>
-    <color name="textColorSecondaryLight">#828282</color>
-    <color name="fabColorLight">#e7e7e7</color>
+    <color name="black_800">#121212</color>
+    <color name="black_900">#000000</color>
 
-    <!--For dark mode-->
-    <color name="backgroundColorDark">#494949</color>
-    <color name="strokeColorDark">#fff</color>
-    <color name="textColorPrimaryDark">#fff</color>
-    <color name="textColorSecondaryDark">#f8f8f8</color>
-    <color name="fabColorDark">#666666</color>
+    <color name="blue_50">#eef0f2</color>
+    <color name="blue_100">#d2dbe0</color>
+    <color name="blue_200">#adbbc4</color>
+    <color name="blue_300">#8ca2ae</color>
+    <color name="blue_600">#4a6572</color>
+    <color name="blue_700">#344955</color>
+    <color name="blue_800">#232f34</color>
+
+    <color name="orange_300">#fbd790</color>
+    <color name="orange_400">#f9be64</color>
+    <color name="orange_500">#f9aa33</color>
+
+    <color name="red_200">#cf7779</color>
+    <color name="red_400">#ff4c5d</color>
+
+    <color name="white_50_alpha_060">#99ffffff</color>
+
+    <color name="blue_50_alpha_060">#99eef0f2</color>
+
+    <color name="black_900_alpha_020">#33000000</color>
+    <color name="black_900_alpha_087">#de000000</color>
+    <color name="black_900_alpha_060">#99000000</color>
+
+    <!--Nav bar color protection for behavior differences between Android P and Q. All sdk-->
+    <!--levels should draw fullscreen. P should color the nav bar with a translucent background -->
+    <!--to guard for contrast. Q should have a transparent nav bar as Q will automatically -->
+    <!--handles contrast by either dynamically coloring the nav bar handle (gesture nav) -->
+    <!--or automatically applying a translucent background (3-button mode).-->
+    <color name="nav_bar">@color/black_900_alpha_020</color>
 </resources>

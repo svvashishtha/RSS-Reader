@@ -1,18 +1,78 @@
-<resources>
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.RssReader">
+<?xml version="1.0" encoding="utf-8"?>
+    <!--
+      Copyright (c) 2020 Google Inc.
 
-    </style>
+      Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+      in compliance with the License. You may obtain a copy of the License at
 
-    <style name="Theme.RssReader" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="backgroundColor">@color/backgroundColorLight</item>
-        <item name="strokeColor">@color/strokeColorLight</item>
-        <item name="textColorPrimary">@color/textColorPrimaryLight</item>
-        <item name="textColorSecondary">@color/textColorSecondaryLight</item>
-        <item name="fabColor">@color/fabColorLight</item>
-    </style>
+      http://www.apache.org/licenses/LICENSE-2.0
 
+      Unless required by applicable law or agreed to in writing, software distributed under the License
+      is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+      or implied. See the License for the specific language governing permissions and limitations under
+      the License.
+      -->
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+<!--Final, top-level theme-->
+<style name="Theme.RssReader.DayNight" parent="Theme.RssReader"/>
+
+<style name="Theme.RssReader" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
+    <!--Color-->
+    <item name="colorPrimary">@color/blue_700</item>
+    <item name="colorPrimaryVariant">@color/blue_800</item>
+    <item name="colorSecondary">@color/orange_500</item>
+    <item name="colorSecondaryVariant">@color/orange_400</item>
+
+    <item name="android:colorBackground">@color/blue_50</item>
+    <item name="colorSurface">@color/white_50</item>
+    <item name="colorPrimarySurfaceVariant">?attr/colorPrimaryVariant</item>
+    <item name="colorError">@color/red_400</item>
+
+    <item name="colorOnPrimary">@color/white_50</item>
+    <item name="colorOnSecondary">@color/black_900</item>
+    <item name="colorOnBackground">@color/black_900</item>
+    <item name="colorOnSurface">@color/black_900</item>
+    <item name="colorOnError">@color/black_900</item>
+
+    <item name="scrimBackground">@color/white_50_alpha_060</item>
+    <item name="android:statusBarColor">@color/blue_50_alpha_060</item>
+    <item name="android:navigationBarColor">@color/nav_bar</item>
+
+    <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.RssReader.SmallComponent</item>
+    <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.RssReader.MediumComponent</item>
+    <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.RssReader.LargeComponent</item>
+
+    <!--Typography-->
+    <item name="textAppearanceHeadline2">@style/TextAppearance.RssReader.Headline2</item>
+    <item name="textAppearanceHeadline3">@style/TextAppearance.RssReader.Headline3</item>
+    <item name="textAppearanceHeadline4">@style/TextAppearance.RssReader.Headline4</item>
+    <item name="textAppearanceHeadline5">@style/TextAppearance.RssReader.Headline5</item>
+    <item name="textAppearanceHeadline6">@style/TextAppearance.RssReader.Headline6</item>
+    <item name="textAppearanceSubtitle1">@style/TextAppearance.RssReader.Subtitle1</item>
+    <item name="textAppearanceSubtitle2">@style/TextAppearance.RssReader.Subtitle2</item>
+    <item name="textAppearanceBody1">@style/TextAppearance.RssReader.Body1</item>
+    <item name="textAppearanceBody2">@style/TextAppearance.RssReader.Body2</item>
+    <item name="textAppearanceButton">@style/TextAppearance.RssReader.Button</item>
+    <item name="textAppearanceCaption">@style/TextAppearance.RssReader.Caption</item>
+    <item name="textAppearanceOverline">@style/TextAppearance.RssReader.Overline</item>
+
+    <item name="emphasisHighAlpha">0.87</item>
+    <item name="emphasisMediumAlpha">0.60</item>
+    <item name="emphasisDisabledAlpha">0.38</item>
+
+    <item name="motionInterpolatorPersistent">@android:interpolator/fast_out_slow_in</item>
+    <item name="motionInterpolatorIncoming">@android:interpolator/decelerate_cubic</item>
+    <item name="motionInterpolatorOutgoing">@android:interpolator/accelerate_cubic</item>
+
+    <!--Styles-->
+    <item name="bottomAppBarStyle">@style/Widget.MaterialComponents.BottomAppBar.PrimarySurface</item>
+    <item name="bottomSheetStyle">@style/Widget.MaterialComponents.BottomSheet.Modal</item>
+    <item name="navigationViewStyle">@style/Widget.RssReader.NavigationView</item>
+
+    <!--System/Platform attributes-->
+    <item name="android:windowBackground">?android:colorBackground</item>
+    <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
+</style>
 </resources>

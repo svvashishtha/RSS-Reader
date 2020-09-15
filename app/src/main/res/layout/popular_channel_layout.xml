@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_12dp"
+        android:text="@string/popular_channels"
+        android:textAppearance="?attr/textAppearanceBody1"
+        android:textSize="@dimen/text_size_24" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/popular_channels"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_48dp"
+        android:drawableStart="@drawable/ic_add_feed"
+        android:drawableTint="@color/white_50"
+        android:layout_margin="@dimen/dimen_12dp"
+        android:text="@string/add_new_channel" />
+
+</LinearLayout>
