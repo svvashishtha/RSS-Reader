@@ -15,13 +15,13 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/popular_channels"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_6dp"
+        android:layout_marginEnd="@dimen/dimen_6dp" />
 
     <com.google.android.material.button.MaterialButton
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_48dp"
-        android:drawableStart="@drawable/ic_add_feed"
-        android:drawableTint="@color/white_50"
         android:layout_margin="@dimen/dimen_12dp"
         android:text="@string/add_new_channel" />
 
