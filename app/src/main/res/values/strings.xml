@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Rss Reader</string>
     <string name="add_new_channel">Add new channel</string>
+    <string name="add_new_channel_transition">add_new_channel</string>
     <string name="add_new_channel_via_url">Add new channel via URL</string>
     <string name="my_channels">My channels</string>
     <string name="rss_feed">RSS feed</string>

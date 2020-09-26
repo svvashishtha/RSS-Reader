@@ -10,6 +10,7 @@ import com.google.android.material.transition.MaterialElevationScale
 import com.rssreader.NavigationGraphDirections
 import com.rssreader.R
 import com.rssreader.databinding.ActivityMainBinding
+import com.rssreader.ui.addChannel.AddNewChannelFragment
 import com.rssreader.util.contentView
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -56,7 +57,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
                 duration = resources.getInteger(R.integer.rss_reader_motion_duration_large).toLong()
             }
         }
-        val directions = NavigationGraphDirections.actionAddFeed()
+        val directions = NavigationGraphDirections.actionAddFeed(AddNewChannelFragment.SOURCE_FAB)
         findNavController(R.id.nav_host_fragment).navigate(directions)
     }
 
