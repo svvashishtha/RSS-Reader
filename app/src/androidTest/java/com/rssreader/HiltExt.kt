@@ -39,25 +39,28 @@ inline fun <reified T : Fragment> launchFragmentInHiltContainer(
     fragmentArgs: Bundle? = null,
     @StyleRes themeResId: Int = R.style.FragmentScenarioEmptyFragmentActivityTheme,
     crossinline action: Fragment.() -> Unit = {}
-) {
+): Fragment {
     val startActivityIntent = Intent.makeMainActivity(
         ComponentName(
             ApplicationProvider.getApplicationContext(),
             HiltTestActivity::class.java
         )
     ).putExtra(EmptyFragmentActivity.THEME_EXTRAS_BUNDLE_KEY, themeResId)
-
+    var fragment: Fragment? = null
     ActivityScenario.launch<HiltTestActivity>(startActivityIntent).onActivity { activity ->
-        val fragment: Fragment = activity.supportFragmentManager.fragmentFactory.instantiate(
+
+        fragment = activity.supportFragmentManager.fragmentFactory.instantiate(
             Preconditions.checkNotNull(T::class.java.classLoader),
             T::class.java.name
         )
-        fragment.arguments = fragmentArgs
+        fragment?.arguments = fragmentArgs
         activity.supportFragmentManager
             .beginTransaction()
-            .add(android.R.id.content, fragment, "")
+            .add(android.R.id.content, fragment!!, "")
             .commitNow()
 
-        fragment.action()
+        fragment?.action()
+
     }
+    return fragment!!
 }
