@@ -22,6 +22,7 @@
     <com.google.android.material.button.MaterialButton
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_48dp"
+        android:textAppearance="?attr/textAppearanceButton"
         android:layout_margin="@dimen/dimen_12dp"
         android:text="@string/add_new_channel" />
 

@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">Rss Reader</string>
-    <string name="add_new_channel">Add new Channel</string>
+    <string name="add_new_channel">Add new channel</string>
+    <string name="add_new_channel_via_url">Add new channel via URL</string>
     <string name="my_channels">My channels</string>
     <string name="rss_feed">RSS feed</string>
     <string name="item_description">Feed item description</string>
     <string name="add_new_feed_content_description">Add new RSS feed</string>
     <string name="popular_channels">Popular channels</string>
+    <string name="enter_url">Enter Url</string>
+    <string name="https_prefix">https://</string>
 </resources>
