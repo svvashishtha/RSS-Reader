@@ -31,6 +31,16 @@ android {
 
     }
 
+    sourceSets {
+        String sharedTestDir = 'src/sharedTest/java'
+        test {
+            java.srcDirs += sharedTestDir
+        }
+        androidTest {
+            java.srcDirs += sharedTestDir
+        }
+    }
+
     //adding this to enable data binding
     buildFeatures {
         dataBinding true

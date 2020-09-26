@@ -12,13 +12,15 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import com.rssreader.R
+import com.rssreader.di.RepositoryModule
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
+import dagger.hilt.android.testing.UninstallModules
 import junit.framework.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-
+@UninstallModules(RepositoryModule::class)
 @RunWith(AndroidJUnit4::class)
 @LargeTest
 @HiltAndroidTest
