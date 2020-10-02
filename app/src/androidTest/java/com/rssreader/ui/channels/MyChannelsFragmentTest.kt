@@ -5,8 +5,11 @@ import androidx.navigation.testing.TestNavHostController
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions
+import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.rssreader.R
@@ -64,5 +67,24 @@ class MyChannelsFragmentTest {
         channelList?.forEach { channel ->
             onView(withText(channel.title)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
         }
+    }
+
+    @Test
+    fun test_ClickOnPopularChannelOpensRssFeedFragment(){
+        // Create a TestNavHostController
+        val navController = TestNavHostController(
+            ApplicationProvider.getApplicationContext()
+        )
+        navController.setGraph(R.navigation.navigation_graph)
+
+        val fragment = launchFragmentInHiltContainer<MyChannelsFragment>()
+
+        Navigation.setViewNavController(fragment.requireView(), navController)
+
+        //click on recycler view item
+        onView(withId(R.id.popular_channels))
+            .perform(actionOnItemAtPosition<PopularChannelViewHolder>(0, click()));
+        //see if RssFeedFragment has been opened.
+        assertEquals(navController.currentDestination?.id, R.id.rssFeedFragment)
     }
 }
