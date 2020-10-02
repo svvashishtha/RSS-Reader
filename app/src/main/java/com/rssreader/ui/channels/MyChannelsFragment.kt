@@ -21,7 +21,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MyChannelsFragment : Fragment() {
+class MyChannelsFragment : Fragment(), PopularChannelAdapter.ChannelAdapterListener {
 
     private lateinit var binding: FragmentMyChannelsBinding
 
@@ -63,7 +63,7 @@ class MyChannelsFragment : Fragment() {
     private fun setUpViewModelVariables() {
         viewModel.suggestedChannels.observe(viewLifecycleOwner, { channelList ->
             channelList?.let { channels ->
-                popularChannelAdapter?.setData(channels as ArrayList<Channel>)
+                popularChannelAdapter.submitList(channels as ArrayList<Channel>)
             }
         })
     }
@@ -74,10 +74,24 @@ class MyChannelsFragment : Fragment() {
         addNewChannelButton = view.findViewById(R.id.add_new_channel_button)
         popularChannelList?.layoutManager = GridLayoutManager(context, SPAN_COUNT)
         popularChannelList?.adapter = popularChannelAdapter
+        popularChannelAdapter.channelAdapterListener = this
     }
 
     companion object {
         const val SPAN_COUNT = 3
+    }
+
+    override fun channelClicked(cardView: View, channel: Channel) {
+        exitTransition = MaterialElevationScale(false).apply {
+            duration = resources.getInteger(R.integer.rss_reader_motion_duration_large).toLong()
+        }
+        reenterTransition = MaterialElevationScale(true).apply {
+            duration = resources.getInteger(R.integer.rss_reader_motion_duration_large).toLong()
+        }
+        val channelToFeedTransition = getString(R.string.channel_to_feed_transition)
+        val extras = FragmentNavigatorExtras(cardView to channelToFeedTransition)
+        val directions = NavigationGraphDirections.channelToFeed(channel)
+        findNavController().navigate(directions, extras)
     }
 
 

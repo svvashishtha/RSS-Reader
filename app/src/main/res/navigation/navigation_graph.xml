@@ -30,9 +30,16 @@
         android:id="@+id/rssFeedFragment"
         android:name="com.rssreader.ui.feed.RssFeedFragment"
         android:label="@string/rss_feed"
-        tools:layout="@layout/fragment_rss_feed" />
+        tools:layout="@layout/fragment_rss_feed" >
+        <argument
+            android:name="channel"
+            app:argType="com.rssreader.data.Channel" />
+    </fragment>
 
     <action
         android:id="@+id/action_add_feed"
         app:destination="@id/addNewFeedFragment" />
+    <action
+        android:id="@+id/channel_to_feed"
+        app:destination="@id/rssFeedFragment" />
 </navigation>

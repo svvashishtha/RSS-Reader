@@ -77,7 +77,14 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
             R.id.feedItemDescriptionFragment -> {
             }
             R.id.rssFeedFragment -> {
+                setUpActivityForRssFeesFragment()
             }
+        }
+    }
+
+    private fun setUpActivityForRssFeesFragment() {
+        binding.run{
+            binding.fab.hide()
         }
     }
 

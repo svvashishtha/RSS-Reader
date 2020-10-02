@@ -5,16 +5,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.decode.SvgDecoder
 import coil.load
 import com.rssreader.R
 import com.rssreader.data.Channel
+import com.rssreader.data.ChannelDiffCallback
 import javax.inject.Inject
 
 class PopularChannelAdapter @Inject constructor(private val svgDecoder: SvgDecoder) :
-    RecyclerView.Adapter<PopularChannelViewHolder>() {
-    var channelList = ArrayList<Channel>()
+    ListAdapter<Channel, PopularChannelViewHolder>(ChannelDiffCallback) {
+
+    var channelAdapterListener: ChannelAdapterListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PopularChannelViewHolder {
         return PopularChannelViewHolder(
@@ -24,15 +27,12 @@ class PopularChannelAdapter @Inject constructor(private val svgDecoder: SvgDecod
     }
 
     override fun onBindViewHolder(holder: PopularChannelViewHolder, position: Int) {
-        holder.bindView(channelList[position])
+        holder.bindView(getItem(position), channelAdapterListener)
     }
 
-    override fun getItemCount(): Int {
-        return channelList.size
-    }
 
-    fun setData(channelList: ArrayList<Channel>) {
-        this.channelList = channelList
+    interface ChannelAdapterListener {
+        fun channelClicked(cardView: View,channel: Channel)
     }
 }
 
@@ -40,7 +40,10 @@ class PopularChannelViewHolder(itemView: View, private val svgDecoder: SvgDecode
     RecyclerView.ViewHolder(itemView) {
     private val channelImage = itemView.findViewById<ImageView>(R.id.channel_image)
     private val channelName = itemView.findViewById<TextView>(R.id.channel_name)
-    fun bindView(channel: Channel) {
+    fun bindView(
+        channel: Channel,
+        channelAdapterListener: PopularChannelAdapter.ChannelAdapterListener?
+    ) {
         channelName.text = channel.title
         if (channel.image?.url != null) {
             if (channel.image.url.endsWith("svg")) {
@@ -50,6 +53,9 @@ class PopularChannelViewHolder(itemView: View, private val svgDecoder: SvgDecode
             } else {
                 channelImage.load(channel.image.url)
             }
+        }
+        itemView.setOnClickListener {
+            channelAdapterListener?.channelClicked(it.findViewById(R.id.channel_card), channel)
         }
     }
 }

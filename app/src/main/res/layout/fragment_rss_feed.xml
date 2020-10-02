@@ -3,8 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.feed.RssFeedFragment">
 
-    <FrameLayout
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
+        android:transitionName="@string/channel_to_feed_transition"
         android:layout_height="match_parent">
         <TextView
             android:layout_width="match_parent"
@@ -12,5 +13,5 @@
             android:gravity="center"
             android:text="@string/rss_feed"
             android:textSize="52sp" />
-    </FrameLayout>
+    </com.google.android.material.card.MaterialCardView>
 </layout>
