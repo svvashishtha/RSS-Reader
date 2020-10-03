@@ -1,7 +1,9 @@
 package com.rssreader.di
 
 import com.rssreader.ui.FakeChannelRepository
+import com.rssreader.ui.FakeFeedRepository
 import com.rssreader.ui.channels.MyChannelRepository
+import com.rssreader.ui.feed.FeedRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -15,4 +17,6 @@ abstract class FakeRepositoryModule {
 
     @Binds
     abstract fun providesChannelRepository(impl: FakeChannelRepository): MyChannelRepository
+    @Binds
+    abstract fun providesRssFeedRepository(impl: FakeFeedRepository): FeedRepository
 }
