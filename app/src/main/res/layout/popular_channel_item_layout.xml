@@ -22,7 +22,7 @@
             android:layout_width="@dimen/dimen_72dp"
             android:layout_height="@dimen/dimen_72dp"
             android:paddingTop="@dimen/dimen_8dp"
-            android:src="@mipmap/ic_launcher" />
+            tools:src="@mipmap/ic_launcher" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/channel_name"

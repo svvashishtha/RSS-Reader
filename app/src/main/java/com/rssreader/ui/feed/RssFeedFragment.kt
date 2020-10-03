@@ -7,14 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.transition.MaterialContainerTransform
 import com.rssreader.R
 import com.rssreader.databinding.FragmentRssFeedBinding
 import com.rssreader.util.themeColor
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 /**
  * Shows the RSS feed of a channel selected.
@@ -26,7 +28,10 @@ class RssFeedFragment : Fragment() {
     private val args: RssFeedFragmentArgs by navArgs()
     private val channel by lazy { args.channel }
     private val viewModel by viewModels<MyFeedViewModel>()
+    var rssFeedListRecyclerView: RecyclerView? = null
 
+    @Inject
+    lateinit var feedAdapter: RssFeedAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedElementEnterTransition = MaterialContainerTransform().apply {
@@ -48,10 +53,20 @@ class RssFeedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpViewModel()
+        setUpFeedListRecyclerView()
         binding.run {
             close.setOnClickListener { findNavController().navigateUp() }
         }
 
+    }
+
+    private fun setUpFeedListRecyclerView() {
+        rssFeedListRecyclerView?.layoutManager = LinearLayoutManager(
+            context,
+            RecyclerView.VERTICAL,
+            false
+        )
+        rssFeedListRecyclerView?.adapter = feedAdapter
     }
 
     private fun setUpViewModel() {
@@ -60,6 +75,7 @@ class RssFeedFragment : Fragment() {
             binding.channelTitle.text = channel.title
             viewModel.fetchChannelRssFeed(channel)
         })
+
     }
 
 }

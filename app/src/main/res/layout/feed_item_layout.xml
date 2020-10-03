@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/channel_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/dimen_6dp"
+    android:layout_marginEnd="@dimen/dimen_6dp"
+    android:transitionName="@string/channel_to_feed_transition"
+    app:cardCornerRadius="@dimen/corner_radius_4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:paddingStart="@dimen/dimen_8dp"
+            android:paddingEnd="@dimen/dimen_8dp"
+            android:paddingBottom="@dimen/dimen_8dp"
+            android:textAppearance="@style/TextAppearance.RssReader.Subtitle1"
+            tools:text="Completing the Roman Telescope's Primary Mirror" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/dimen_8dp"
+            android:id="@+id/body_image"
+            android:paddingBottom="@dimen/dimen_8dp"
+            tools:src="@mipmap/ic_launcher" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:paddingStart="@dimen/dimen_8dp"
+            android:paddingEnd="@dimen/dimen_8dp"
+            android:paddingBottom="@dimen/dimen_8dp"
+            android:textAppearance="@style/TextAppearance.RssReader.Body1"
+            tools:text="The Nancy Grace Roman Space Telescope’s primary mirror, which will collect and focus light from cosmic objects near and far, has been completed." />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/publish_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:paddingStart="@dimen/dimen_8dp"
+            android:paddingEnd="@dimen/dimen_8dp"
+            android:paddingBottom="@dimen/dimen_8dp"
+            android:textAppearance="@style/TextAppearance.RssReader.Caption"
+            tools:text="Fri, 04 Sep" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
