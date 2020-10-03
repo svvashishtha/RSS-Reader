@@ -40,13 +40,13 @@ class AddNewChannelFragment : Fragment() {
                 startView = requireActivity().findViewById(R.id.fab)
             else if (source == SOURCE_BUTTON)
                 startView = requireActivity().findViewById(R.id.add_new_channel_button)
-            endView = add_new_feed_view
+            endView = add_new_channel_view
             duration = resources.getInteger(R.integer.rss_reader_motion_duration_large).toLong()
             scrimColor = Color.TRANSPARENT
         }
         returnTransition = Slide().apply {
             duration = resources.getInteger(R.integer.rss_reader_motion_duration_medium).toLong()
-            addTarget(R.id.add_new_feed_view)
+            addTarget(R.id.add_new_channel_view)
         }
         binding.run {
             close.setOnClickListener { findNavController().navigateUp() }

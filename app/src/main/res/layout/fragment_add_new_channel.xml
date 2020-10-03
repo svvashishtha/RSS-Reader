@@ -5,7 +5,7 @@
     tools:context=".ui.addChannel.AddNewChannelFragment">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/add_new_feed_view"
+        android:id="@+id/add_new_channel_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -33,6 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_24dp"
+                android:tint="?attr/colorOnSurface"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_baseline_close_24"
                 app:layout_constraintEnd_toStartOf="@id/add_channel_title"
