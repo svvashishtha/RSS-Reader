@@ -19,6 +19,9 @@
         android:name="com.rssreader.ui.channels.MyChannelsFragment"
         android:label="@string/my_channels"
         tools:layout="@layout/fragment_my_channels" >
+        <action
+            android:id="@+id/action_navigate_to_selected_feed"
+            app:destination="@id/rssFeedFragment" />
 
     </fragment>
     <fragment

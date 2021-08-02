@@ -22,7 +22,7 @@ class RssFeedItemViewHolder(itemView: View, private val svgDecoder: SvgDecoder) 
         title.text = item.title
         description.text = item.description
         publishDate.text = item.pubDate
-        item.enclosure?._url?.let { url ->
+        /*item.enclosure?.url?.let { url ->
             if (url.endsWith("svg")) {
                 bodyImage.load(url) {
                     decoder(svgDecoder)
@@ -30,6 +30,6 @@ class RssFeedItemViewHolder(itemView: View, private val svgDecoder: SvgDecoder) 
             } else {
                 bodyImage.load(url)
             }
-        }
+        }*/
     }
 }

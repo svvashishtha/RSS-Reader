@@ -1,7 +1,8 @@
 package com.rssreader.ui.feed
 
 import com.rssreader.data.Channel
+import com.rssreader.data.FeedWrapper
 
 interface FeedRepository {
-    fun fetchRssFeedForChannel(channel: Channel)
+    suspend fun fetchRssFeedForChannel(channel: Channel): FeedWrapper
 }

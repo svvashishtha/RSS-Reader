@@ -2,11 +2,13 @@ package com.rssreader.ui.feed
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -74,6 +76,9 @@ class RssFeedFragment : Fragment() {
         viewModel.channel.observe(viewLifecycleOwner, { channel ->
             binding.channelTitle.text = channel.title
             viewModel.fetchChannelRssFeed(channel)
+        })
+        viewModel.feed.observe(viewLifecycleOwner, Observer {
+            Log.d("RssFeedFragment", "received update")
         })
 
     }
