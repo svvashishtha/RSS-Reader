@@ -12,6 +12,7 @@ import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import com.rssreader.R
 import com.rssreader.di.RepositoryModule
 import com.rssreader.launchFragmentInHiltContainer
@@ -48,7 +49,9 @@ class MyChannelsFragmentTest {
         val navController = TestNavHostController(
             ApplicationProvider.getApplicationContext()
         )
-        navController.setGraph(R.navigation.navigation_graph)
+        InstrumentationRegistry.getInstrumentation().runOnMainSync {
+            navController.setGraph(R.navigation.navigation_graph)
+        }
 
         val fragment = launchFragmentInHiltContainer<MyChannelsFragment>()
 

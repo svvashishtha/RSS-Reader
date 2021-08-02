@@ -11,6 +11,7 @@ import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
+import androidx.test.platform.app.InstrumentationRegistry
 import com.rssreader.R
 import com.rssreader.data.Channel
 import com.rssreader.di.RepositoryModule
@@ -49,7 +50,9 @@ class RssFeedFragmentTest {
         val navController = TestNavHostController(
             ApplicationProvider.getApplicationContext()
         )
+        InstrumentationRegistry.getInstrumentation().runOnMainSync{
         navController.setGraph(R.navigation.navigation_graph)
+        }
         val fragmentArgs = Bundle().apply {
             putSerializable("channel", channel)
         }

@@ -16,7 +16,6 @@ buildscript {
         androidXTestExtKotlinRunnerVersion = '1.1.3'
         androidXLegacySupport = '1.0.0'
         espressoVersion = '3.4.0'
-        roomVersion = '2.2.5'
         archTestingVersion = '2.1.0'
         androidXTestRulesVersion = '1.4.0'
         androidXAnnotations = '1.1.0'
