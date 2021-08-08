@@ -5,16 +5,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.transition.Slide
 import com.google.android.material.transition.MaterialContainerTransform
 import com.rssreader.R
 import com.rssreader.databinding.FragmentAddNewChannelBinding
+import com.rssreader.network.ApiStatus
+import com.rssreader.ui.channels.MyChannelsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_add_new_channel.*
 
-
+@AndroidEntryPoint
 class AddNewChannelFragment : Fragment() {
 
     companion object {
@@ -25,6 +31,7 @@ class AddNewChannelFragment : Fragment() {
     private val args: AddNewChannelFragmentArgs by navArgs()
     private val source by lazy { args.source }
     private lateinit var binding: FragmentAddNewChannelBinding
+    private val viewModel by viewModels<AddNewChannelViewModel>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -50,7 +57,34 @@ class AddNewChannelFragment : Fragment() {
         }
         binding.run {
             close.setOnClickListener { findNavController().navigateUp() }
+            addNewChannelButton.setOnClickListener {
+                val url = inputUrl.text.toString().trim()
+                if (viewModel.isValidUrl(url)) {
+                    viewModel.addChannel(url)
+                } else {
+                    Toast.makeText(it.context, "Invalid url", Toast.LENGTH_LONG).show()
+                }
+            }
         }
+        setUpViewModelVariables()
 
+
+    }
+
+
+    private fun setUpViewModelVariables() {
+        viewModel.addChannelApiResponse.observe(viewLifecycleOwner, Observer {
+            when(it.apiStatus){
+                ApiStatus.LOADING ->{}
+                ApiStatus.SUCCESS ->{context?.let{
+                    Toast.makeText(it, "Channel Successfully added", Toast.LENGTH_LONG).show()
+                }}
+                ApiStatus.ERROR ->{
+                    context?.let{
+                        Toast.makeText(it, "Failed to add Channel", Toast.LENGTH_LONG).show()
+                    }
+                }
+            }
+        })
     }
 }

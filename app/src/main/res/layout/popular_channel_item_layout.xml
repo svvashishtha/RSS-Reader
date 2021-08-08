@@ -5,9 +5,8 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:id="@+id/channel_card"
-    android:layout_marginStart="@dimen/dimen_6dp"
+    android:layout_margin="@dimen/dimen_6dp"
     android:transitionName="@string/channel_to_feed_transition"
-    android:layout_marginEnd="@dimen/dimen_6dp"
     app:cardCornerRadius="@dimen/corner_radius_4dp">
 
     <LinearLayout

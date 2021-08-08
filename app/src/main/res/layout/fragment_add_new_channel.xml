@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_24dp"
-                android:tint="?attr/colorOnSurface"
+                app:tint="?attr/colorOnSurface"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_baseline_close_24"
                 app:layout_constraintEnd_toStartOf="@id/add_channel_title"
@@ -69,6 +69,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/input_url"
                     android:textAppearance="?attr/textAppearanceBody1" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -81,6 +82,7 @@
                 app:layout_constraintStart_toStartOf="@id/guideline_start"
                 app:layout_constraintEnd_toEndOf="@id/guideline_end"
                 android:text="@string/add_new_channel"
+                android:id="@+id/add_new_channel_button"
                 android:textAppearance="?attr/textAppearanceButton"
                 app:layout_constraintTop_toBottomOf="@id/textField_url" />
 

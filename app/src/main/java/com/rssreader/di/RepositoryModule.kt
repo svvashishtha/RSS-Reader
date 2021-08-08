@@ -1,5 +1,7 @@
 package com.rssreader.di
 
+import com.rssreader.ui.addChannel.AddChannelRepoImpl
+import com.rssreader.ui.addChannel.AddChannelRepository
 import com.rssreader.ui.channels.ChannelRepositoryImpl
 import com.rssreader.ui.channels.MyChannelRepository
 import com.rssreader.ui.feed.FeedRepository
@@ -19,4 +21,7 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun providesRssFeedRepository(impl: FeedRepositoryImpl): FeedRepository
+
+    @Binds
+    abstract fun providesAddChannelRepository(impl: AddChannelRepoImpl): AddChannelRepository
 }
