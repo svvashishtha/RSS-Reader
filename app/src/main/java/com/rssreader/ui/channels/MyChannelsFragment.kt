@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -16,6 +18,7 @@ import com.rssreader.NavigationGraphDirections
 import com.rssreader.R
 import com.rssreader.data.Channel
 import com.rssreader.databinding.FragmentMyChannelsBinding
+import com.rssreader.network.ApiStatus
 import com.rssreader.ui.addChannel.AddNewChannelFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -55,17 +58,34 @@ class MyChannelsFragment : Fragment(), PopularChannelAdapter.ChannelAdapterListe
             }
             val addNewChannelTransition = getString(R.string.add_new_channel_transition)
             val extras = FragmentNavigatorExtras(it to addNewChannelTransition)
-            val directions = NavigationGraphDirections.actionAddFeed(AddNewChannelFragment.SOURCE_BUTTON)
+            val directions =
+                NavigationGraphDirections.actionAddFeed(AddNewChannelFragment.SOURCE_BUTTON)
             findNavController().navigate(directions, extras)
         }
     }
 
     private fun setUpViewModelVariables() {
-        viewModel.suggestedChannels.observe(viewLifecycleOwner, { channelList ->
-            channelList?.let { channels ->
-                popularChannelAdapter.submitList(channels as ArrayList<Channel>)
+        viewModel.suggestedChannelsApiResponse.observe(viewLifecycleOwner, { apiRespone ->
+            when (apiRespone.apiStatus) {
+                ApiStatus.LOADING -> {
+                    binding.loadingView.visibility = View.VISIBLE
+                }
+                ApiStatus.SUCCESS -> {
+                    binding.loadingView.visibility = View.GONE
+                    apiRespone.data?.let { channels ->
+                        popularChannelAdapter.submitList(channels as ArrayList<Channel>)
+                    }
+                }
+                ApiStatus.ERROR -> {
+                    binding.loadingView.visibility = View.GONE
+                    Toast.makeText(context, apiRespone.message, Toast.LENGTH_LONG).show()
+                }
             }
+
         })
+        lifecycleScope.launchWhenResumed {
+            viewModel.getChannels()
+        }
     }
 
     private fun initialiseViews(view: View) {

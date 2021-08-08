@@ -6,6 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/dimen_6dp"
+    android:layout_marginTop="@dimen/dimen_4dp"
+    android:layout_marginBottom="@dimen/dimen_4dp"
     android:layout_marginEnd="@dimen/dimen_6dp"
     android:transitionName="@string/channel_to_feed_transition"
     app:cardCornerRadius="@dimen/corner_radius_4dp">
@@ -25,13 +27,14 @@
             android:paddingStart="@dimen/dimen_8dp"
             android:paddingEnd="@dimen/dimen_8dp"
             android:paddingBottom="@dimen/dimen_8dp"
-            android:textAppearance="@style/TextAppearance.RssReader.Subtitle1"
+            android:textAppearance="@style/TextAppearance.RssReader.Headline6"
             tools:text="Completing the Roman Telescope's Primary Mirror" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/dimen_8dp"
+            android:adjustViewBounds="true"
             android:id="@+id/body_image"
             android:paddingBottom="@dimen/dimen_8dp"
             tools:src="@mipmap/ic_launcher" />

@@ -1,40 +1,37 @@
 package com.rssreader.data
 
-import org.simpleframework.xml.Element
-import org.simpleframework.xml.ElementList
-import org.simpleframework.xml.Path
-import org.simpleframework.xml.Root
+import androidx.recyclerview.widget.DiffUtil
+import com.google.gson.Gson
+import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
 
-@Root(name = "rss", strict = false)
-class FeedWrapper @JvmOverloads constructor(
-    @field: Element(name = "channel", required = false)
-    var channel: FeedResponse? = null
-)
-@Root(name = "channel", strict = false)
-class FeedResponse @JvmOverloads constructor(
-    @field: Element(name = "title", required = false)
-    var title: String? = null,
-    @field: ElementList(inline = true, required = false)
-    var itemList: List<FeedItem>? = null
-)
 
-/*@Path("channel")
-    @field:Element(name = "title", required = false)
-    @param:Element(name = "title", required = false)
-    var title: String? = null,
+data class FeedWrapper(
+    @SerializedName("title") @Expose val title: String?,
+    @SerializedName("description") @Expose val description: String?,
+    @SerializedName("item") @Expose val itemList: List<FeedItem>
+    )
 
-    @field:Element(name = "description", required = false)
-    @param:Element(name = "description", required = false)
-    @Path("channel")
-    var description: String? = null,
+data class FeedItem(@SerializedName("title") @Expose val title: String?,
+                    @SerializedName("description") @Expose val description: String?,
+                    @SerializedName("link") @Expose val link: String?,
+                    @SerializedName("pubDate") @Expose val publicationDate: String?,
+                    @SerializedName("media") @Expose val media: Media?)
 
-    /**
-     * @return the articleList
-     */
-    /**
-     * @param articleList the articleList to set
-     */
-    @field:ElementList(name = "item", required = false)
-    @param:ElementList(name = "item", required = false)
-    @Path("channel")
-    var articleList: List<FeedItem>? = null*/
+data class Media(@SerializedName("href") @Expose val href: String?,
+                 @SerializedName("type") @Expose val type: String?
+){
+    override fun toString(): String {
+        return Gson().toJson(this)
+    }
+}
+object FeedItemDiffCallback : DiffUtil.ItemCallback<FeedItem>() {
+    override fun areItemsTheSame(oldItem: FeedItem, newItem: FeedItem): Boolean {
+        return oldItem.title == newItem.title
+    }
+
+    override fun areContentsTheSame(oldItem: FeedItem, newItem: FeedItem): Boolean {
+        return oldItem.publicationDate == newItem.publicationDate
+    }
+
+}

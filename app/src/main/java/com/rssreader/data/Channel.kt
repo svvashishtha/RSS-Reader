@@ -3,6 +3,7 @@ package com.rssreader.data
 import androidx.recyclerview.widget.DiffUtil
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 @Entity
@@ -13,9 +14,10 @@ class Channel(
     val webMaster: String? = null,
     val docs: String? = null,
 
-    @PrimaryKey(autoGenerate = true)
-    val id: Int = -1,
-    val image: Image? = null,
+    @PrimaryKey()
+    val id: String,
+    val image: String? = null,
+    @SerializedName("channel_url")
     val channelUrl: String = "",
     val lastBuildDate: String? = null,
     val ttl: Int? = null

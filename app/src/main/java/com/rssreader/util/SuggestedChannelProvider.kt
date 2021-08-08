@@ -1,7 +1,6 @@
 package com.rssreader.util
 
 import com.rssreader.data.Channel
-import com.rssreader.data.Image
 
 class SuggestedChannelProvider {
     companion object {
@@ -14,13 +13,9 @@ class SuggestedChannelProvider {
                     language = "en-us",
                     webMaster = null,
                     docs = null,
-                    id = 0,
+                    id = "1",
                     channelUrl = "http://www.nasa.gov/rss/dyn/lg_image_of_the_day.rss",
-                    image = Image(
-                        url = "https://www.nasa.gov/sites/all/themes/custom/nasatwo/images/nasa-logo.svg",
-                        title = "NASA Image of the Day",
-                        link = "http://www.nasa.gov"
-                    ),
+                    image = "https://www.nasa.gov/sites/all/themes/custom/nasatwo/images/nasa-logo.svg",
                     lastBuildDate = null,
                     ttl = null
                 )
@@ -32,13 +27,9 @@ class SuggestedChannelProvider {
                     language = "en-gb",
                     webMaster = null,
                     docs = null,
-                    id = 0,
+                    id = "2",
                     channelUrl = "http://www.nasa.gov/rss/dyn/lg_image_of_the_day.rss",
-                    image = Image(
-                        url = "https://news.bbcimg.co.uk/nol/shared/img/bbc_news_120x60.gif",
-                        title = "BBC News - Home",
-                        link = "https://www.bbc.co.uk/news/"
-                    ),
+                    image = "https://news.bbcimg.co.uk/nol/shared/img/bbc_news_120x60.gif",
                     ttl = null,
                     lastBuildDate = null
                 )

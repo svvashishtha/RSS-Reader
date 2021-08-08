@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.transition.MaterialContainerTransform
 import com.rssreader.R
 import com.rssreader.databinding.FragmentRssFeedBinding
+import com.rssreader.network.ApiResponse
+import com.rssreader.network.ApiStatus
 import com.rssreader.util.themeColor
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -26,11 +28,10 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class RssFeedFragment : Fragment() {
 
-    private lateinit var binding: FragmentRssFeedBinding
+    private var binding: FragmentRssFeedBinding? = null
     private val args: RssFeedFragmentArgs by navArgs()
     private val channel by lazy { args.channel }
     private val viewModel by viewModels<MyFeedViewModel>()
-    var rssFeedListRecyclerView: RecyclerView? = null
 
     @Inject
     lateinit var feedAdapter: RssFeedAdapter
@@ -49,36 +50,50 @@ class RssFeedFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentRssFeedBinding.inflate(inflater, container, false)
-        return binding.root
+        return binding!!.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpViewModel()
         setUpFeedListRecyclerView()
-        binding.run {
+        binding?.run {
             close.setOnClickListener { findNavController().navigateUp() }
         }
 
     }
 
     private fun setUpFeedListRecyclerView() {
-        rssFeedListRecyclerView?.layoutManager = LinearLayoutManager(
+        binding?.rssFeedList?.layoutManager = LinearLayoutManager(
             context,
             RecyclerView.VERTICAL,
             false
         )
-        rssFeedListRecyclerView?.adapter = feedAdapter
+        binding?.rssFeedList?.adapter = feedAdapter
     }
 
     private fun setUpViewModel() {
         viewModel.channel.postValue(channel)
         viewModel.channel.observe(viewLifecycleOwner, { channel ->
-            binding.channelTitle.text = channel.title
+            binding?.channelTitle?.text = channel.title
             viewModel.fetchChannelRssFeed(channel)
         })
-        viewModel.feed.observe(viewLifecycleOwner, Observer {
+        viewModel.feed.observe(viewLifecycleOwner, Observer { feedAPiResponse ->
+            when (feedAPiResponse.apiStatus) {
+                ApiStatus.ERROR -> {
+
+                }
+                ApiStatus.SUCCESS -> {
+                    feedAPiResponse.data?.itemList?.let {
+                        feedAdapter.submitList(it)
+                    }
+                }
+                ApiStatus.LOADING -> {
+
+                }
+            }
             Log.d("RssFeedFragment", "received update")
+
         })
 
     }

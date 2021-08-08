@@ -45,13 +45,13 @@ class PopularChannelViewHolder(itemView: View, private val svgDecoder: SvgDecode
         channelAdapterListener: PopularChannelAdapter.ChannelAdapterListener?
     ) {
         channelName.text = channel.title
-        if (channel.image?.url != null) {
-            if (channel.image.url.endsWith("svg")) {
-                channelImage.load(channel.image.url) {
+        if (channel.image != null) {
+            if (channel.image.endsWith("svg")) {
+                channelImage.load(channel.image) {
                     decoder(svgDecoder)
                 }
             } else {
-                channelImage.load(channel.image.url)
+                channelImage.load(channel.image)
             }
         }
         itemView.setOnClickListener {

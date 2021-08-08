@@ -7,14 +7,14 @@ class Converters {
     companion object {
         @TypeConverter
         @JvmStatic
-        fun imageToString(image: Image?): String? {
-            return image?.toString()
+        fun mediaToString(media: Media?): String? {
+            return media?.toString()
         }
 
         @TypeConverter
         @JvmStatic
-        fun stringToImage( jsonString: String?): Image?{
-            return if (jsonString !=null) Gson().fromJson(jsonString, Image::class.java) else null
+        fun stringToMedia( jsonString: String?): Media?{
+            return if (jsonString !=null) Gson().fromJson(jsonString, Media::class.java) else null
         }
     }
 }

@@ -2,7 +2,8 @@ package com.rssreader.ui.channels
 
 import androidx.lifecycle.LiveData
 import com.rssreader.data.Channel
+import com.rssreader.network.ApiResponse
 
 interface MyChannelRepository {
-    fun getSuggestedChannels(): LiveData<List<Channel>>
+    suspend fun getSuggestedChannels(): ApiResponse<List<Channel>>
 }
