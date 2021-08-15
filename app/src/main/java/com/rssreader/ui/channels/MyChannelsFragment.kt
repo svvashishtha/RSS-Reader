@@ -8,12 +8,20 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import coil.decode.SvgDecoder
+import com.firebase.ui.firestore.FirestoreArray
+import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.firebase.ui.firestore.ObservableSnapshotArray
 import com.google.android.material.transition.MaterialElevationScale
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.rssreader.NavigationGraphDirections
 import com.rssreader.R
 import com.rssreader.data.Channel
@@ -24,7 +32,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MyChannelsFragment : Fragment(), PopularChannelAdapter.ChannelAdapterListener {
+class MyChannelsFragment : Fragment(),ChannelAdapterListener {
 
     private lateinit var binding: FragmentMyChannelsBinding
 
@@ -34,8 +42,26 @@ class MyChannelsFragment : Fragment(), PopularChannelAdapter.ChannelAdapterListe
     private var addNewChannelButton: Button? = null
 
     @Inject
-    lateinit var popularChannelAdapter: PopularChannelAdapter
+    lateinit var svgDecoder: SvgDecoder
 
+    var popularChannelAdapter: PopularChannelFireStoreAdapter? = null
+
+    object ChannelsLiveData : LiveData<ObservableSnapshotArray<Channel>>(),
+        FirebaseAuth.AuthStateListener {
+        init {
+            FirebaseAuth.getInstance().addAuthStateListener(this)
+        }
+
+        val channelsQuery = FirebaseFirestore.getInstance().collection("channels")
+        override fun onAuthStateChanged(auth: FirebaseAuth) {
+            value?.removeAllListeners()
+            value =
+                if (auth.currentUser == null) null else FirestoreArray(channelsQuery) { snapshot ->
+                    snapshot.toObject(Channel::class.java)!!
+                }
+        }
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,10 +88,26 @@ class MyChannelsFragment : Fragment(), PopularChannelAdapter.ChannelAdapterListe
                 NavigationGraphDirections.actionAddFeed(AddNewChannelFragment.SOURCE_BUTTON)
             findNavController().navigate(directions, extras)
         }
+        ChannelsLiveData.observe(viewLifecycleOwner, Observer { snapshots ->
+//            popularChannelAdapter?.stopListening()
+//            lifecycle.removeObserver(popularChannelAdapter)
+            if (snapshots == null) {
+                //Not signed in
+            } else {
+                val options = FirestoreRecyclerOptions.Builder<Channel>()
+                    .setSnapshotArray(snapshots)
+                    .setLifecycleOwner(viewLifecycleOwner)
+                    .build()
+                popularChannelAdapter = PopularChannelFireStoreAdapter(options, svgDecoder)
+
+                popularChannelList?.adapter = popularChannelAdapter
+                popularChannelAdapter?.channelAdapterListener = this
+            }
+        })
     }
 
     private fun setUpViewModelVariables() {
-        viewModel.suggestedChannelsApiResponse.observe(viewLifecycleOwner, { apiRespone ->
+       /* viewModel.suggestedChannelsApiResponse.observe(viewLifecycleOwner, { apiRespone ->
             when (apiRespone.apiStatus) {
                 ApiStatus.LOADING -> {
                     binding.loadingView.visibility = View.VISIBLE
@@ -85,7 +127,7 @@ class MyChannelsFragment : Fragment(), PopularChannelAdapter.ChannelAdapterListe
         })
         lifecycleScope.launchWhenResumed {
             viewModel.getChannels()
-        }
+        }*/
     }
 
     private fun initialiseViews(view: View) {
@@ -93,8 +135,8 @@ class MyChannelsFragment : Fragment(), PopularChannelAdapter.ChannelAdapterListe
         popularChannelList = view.findViewById(R.id.popular_channels)
         addNewChannelButton = view.findViewById(R.id.add_new_channel_button)
         popularChannelList?.layoutManager = GridLayoutManager(context, SPAN_COUNT)
-        popularChannelList?.adapter = popularChannelAdapter
-        popularChannelAdapter.channelAdapterListener = this
+        /*popularChannelList?.adapter = popularChannelAdapter
+        popularChannelAdapter?.channelAdapterListener = this*/
     }
 
     companion object {

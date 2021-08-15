@@ -13,7 +13,6 @@ import java.lang.Exception
 import javax.inject.Inject
 
 class ChannelRepositoryImpl @Inject constructor(
-    private val channelDao: ChannelDao,
     private val rssService: RSSService
 ) :
     MyChannelRepository {

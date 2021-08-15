@@ -31,9 +31,7 @@ class PopularChannelAdapter @Inject constructor(private val svgDecoder: SvgDecod
     }
 
 
-    interface ChannelAdapterListener {
-        fun channelClicked(cardView: View,channel: Channel)
-    }
+
 }
 
 class PopularChannelViewHolder(itemView: View, private val svgDecoder: SvgDecoder) :
@@ -42,7 +40,7 @@ class PopularChannelViewHolder(itemView: View, private val svgDecoder: SvgDecode
     private val channelName = itemView.findViewById<TextView>(R.id.channel_name)
     fun bindView(
         channel: Channel,
-        channelAdapterListener: PopularChannelAdapter.ChannelAdapterListener?
+        channelAdapterListener: ChannelAdapterListener?
     ) {
         channelName.text = channel.title
         if (channel.image != null) {

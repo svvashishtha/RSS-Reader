@@ -7,9 +7,7 @@ import androidx.room.Query
 @Dao
 interface ChannelDao {
 
-    @Query("SELECT * FROM channel")
-    fun getAllChannels(): List<Channel>
 
-    @Insert
-    fun insertChannel(channel: Channel)
+
+
 }

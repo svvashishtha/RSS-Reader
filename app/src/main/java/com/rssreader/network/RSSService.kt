@@ -9,7 +9,8 @@ import javax.inject.Inject
 
 class RSSService @Inject constructor() {
 
-    private val baseURL = "http://192.168.0.130:8080/"
+    private val baseURL = "https://flask-rss-ihomm3bieq-as.a.run.app"
+//    private val baseURL = "http://192.168.0.130:8080/"
     private fun getRetroFit(baseURL: String): Retrofit {
         return Retrofit.Builder()
             .baseUrl(baseURL)

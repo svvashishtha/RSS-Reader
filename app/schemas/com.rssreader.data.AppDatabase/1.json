@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "8e6311e34c99021e71a10cd8555edbf9",
+    "identityHash": "957ea08ea2848188ee85838376a12e8c",
     "entities": [
       {
         "tableName": "Channel",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`title` TEXT, `description` TEXT, `language` TEXT, `webMaster` TEXT, `docs` TEXT, `id` TEXT NOT NULL, `image` TEXT, `channelUrl` TEXT NOT NULL, `lastBuildDate` TEXT, `ttl` INTEGER, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`title` TEXT, `description` TEXT, `language` TEXT, `webMaster` TEXT, `docs` TEXT, `id` TEXT NOT NULL, `image` TEXT, `channelUrl` TEXT NOT NULL, `lastBuildDate` TEXT, `ttl` INTEGER)",
         "fields": [
           {
             "fieldPath": "title",
@@ -70,9 +70,7 @@
           }
         ],
         "primaryKey": {
-          "columnNames": [
-            "id"
-          ],
+          "columnNames": [],
           "autoGenerate": false
         },
         "indices": [],
@@ -82,7 +80,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '8e6311e34c99021e71a10cd8555edbf9')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '957ea08ea2848188ee85838376a12e8c')"
     ]
   }
 }

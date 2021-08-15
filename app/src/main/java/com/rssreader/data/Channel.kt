@@ -6,22 +6,20 @@ import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-@Entity
 class Channel(
     val title: String? = null,
     val description: String? = null,
     val language: String? = null,
     val webMaster: String? = null,
     val docs: String? = null,
-
-    @PrimaryKey()
-    val id: String,
+    val id: String = "",
     val image: String? = null,
     @SerializedName("channel_url")
     val channelUrl: String = "",
     val lastBuildDate: String? = null,
     val ttl: Int? = null
-) : Serializable
+) : Serializable{
+}
 
 object ChannelDiffCallback : DiffUtil.ItemCallback<Channel>() {
     override fun areItemsTheSame(oldItem: Channel, newItem: Channel): Boolean {

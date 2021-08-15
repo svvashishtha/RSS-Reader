@@ -12,7 +12,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 @Module
 class DatabaseModule {
-    @Provides
+    /*@Provides
     fun provideChannelDao(appDatabase: AppDatabase): ChannelDao {
         return appDatabase.channelDao()
     }
@@ -25,5 +25,5 @@ class DatabaseModule {
             AppDatabase::class.java,
             "RssReader"
         ).build()
-    }
+    }*/
 }
