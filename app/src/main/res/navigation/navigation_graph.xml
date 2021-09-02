@@ -28,7 +28,11 @@
         android:id="@+id/feedItemDescriptionFragment"
         android:name="com.rssreader.ui.itemdescription.FeedItemDescriptionFragment"
         android:label="@string/item_description"
-        tools:layout="@layout/fragment_feed_item_description" />
+        tools:layout="@layout/fragment_feed_item_description" >
+        <argument
+            android:name="item"
+            app:argType="com.rssreader.data.FeedItem" />
+    </fragment>
     <fragment
         android:id="@+id/rssFeedFragment"
         android:name="com.rssreader.ui.feed.RssFeedFragment"
@@ -37,6 +41,9 @@
         <argument
             android:name="channel"
             app:argType="com.rssreader.data.Channel" />
+        <action
+            android:id="@+id/action_navigate_feed_to_item"
+            app:destination="@id/feedItemDescriptionFragment"/>
     </fragment>
 
     <action
@@ -45,4 +52,7 @@
     <action
         android:id="@+id/channel_to_feed"
         app:destination="@id/rssFeedFragment" />
+    <action
+        android:id="@+id/feed_to_item"
+        app:destination="@id/feedItemDescriptionFragment"/>
 </navigation>

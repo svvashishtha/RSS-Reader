@@ -74,7 +74,6 @@ class MyChannelsFragment : Fragment(),ChannelAdapterListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initialiseViews(view)
-        setUpViewModelVariables()
         addNewChannelButton?.setOnClickListener {
             exitTransition = MaterialElevationScale(false).apply {
                 duration = resources.getInteger(R.integer.rss_reader_motion_duration_large).toLong()
@@ -106,37 +105,12 @@ class MyChannelsFragment : Fragment(),ChannelAdapterListener {
         })
     }
 
-    private fun setUpViewModelVariables() {
-       /* viewModel.suggestedChannelsApiResponse.observe(viewLifecycleOwner, { apiRespone ->
-            when (apiRespone.apiStatus) {
-                ApiStatus.LOADING -> {
-                    binding.loadingView.visibility = View.VISIBLE
-                }
-                ApiStatus.SUCCESS -> {
-                    binding.loadingView.visibility = View.GONE
-                    apiRespone.data?.let { channels ->
-                        popularChannelAdapter.submitList(channels as ArrayList<Channel>)
-                    }
-                }
-                ApiStatus.ERROR -> {
-                    binding.loadingView.visibility = View.GONE
-                    Toast.makeText(context, apiRespone.message, Toast.LENGTH_LONG).show()
-                }
-            }
-
-        })
-        lifecycleScope.launchWhenResumed {
-            viewModel.getChannels()
-        }*/
-    }
 
     private fun initialiseViews(view: View) {
         popularChannelView = view.findViewById(R.id.popular_channel_view)
         popularChannelList = view.findViewById(R.id.popular_channels)
         addNewChannelButton = view.findViewById(R.id.add_new_channel_button)
         popularChannelList?.layoutManager = GridLayoutManager(context, SPAN_COUNT)
-        /*popularChannelList?.adapter = popularChannelAdapter
-        popularChannelAdapter?.channelAdapterListener = this*/
     }
 
     companion object {

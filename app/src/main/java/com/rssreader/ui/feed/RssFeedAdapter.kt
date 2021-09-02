@@ -9,8 +9,11 @@ import com.rssreader.data.FeedItem
 import com.rssreader.data.FeedItemDiffCallback
 import javax.inject.Inject
 
-class RssFeedAdapter @Inject constructor(private val svgDecoder: SvgDecoder) :
+class RssFeedAdapter @Inject constructor(
+    private val svgDecoder: SvgDecoder
+) :
     ListAdapter<FeedItem, RssFeedItemViewHolder>(FeedItemDiffCallback) {
+    var mListener: FeedItemClickListener? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RssFeedItemViewHolder {
         return RssFeedItemViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.feed_item_layout, parent, false),
@@ -19,6 +22,6 @@ class RssFeedAdapter @Inject constructor(private val svgDecoder: SvgDecoder) :
     }
 
     override fun onBindViewHolder(holder: RssFeedItemViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), mListener)
     }
 }

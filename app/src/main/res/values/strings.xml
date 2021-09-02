@@ -11,4 +11,5 @@
     <string name="popular_channels">Popular channels</string>
     <string name="enter_url">Enter Url</string>
     <string name="https_prefix">https://</string>
+    <string name="feed_to_description_transition">feed_to_description</string>
 </resources>

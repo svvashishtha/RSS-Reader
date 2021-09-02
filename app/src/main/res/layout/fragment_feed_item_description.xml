@@ -3,8 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.itemdescription.FeedItemDescriptionFragment">
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:transitionName="@string/feed_to_description_transition"
         android:layout_height="match_parent">
 
         <TextView
@@ -13,5 +14,5 @@
             android:gravity="center"
             android:text="@string/item_description"
             android:textSize="52sp" />
-    </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

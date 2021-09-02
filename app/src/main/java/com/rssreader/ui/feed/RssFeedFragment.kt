@@ -9,14 +9,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.transition.MaterialContainerTransform
+import com.google.android.material.transition.MaterialElevationScale
+import com.rssreader.NavigationGraphDirections
 import com.rssreader.R
+import com.rssreader.data.FeedItem
 import com.rssreader.databinding.FragmentRssFeedBinding
-import com.rssreader.network.ApiResponse
 import com.rssreader.network.ApiStatus
 import com.rssreader.util.themeColor
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,7 +29,7 @@ import javax.inject.Inject
  * Shows the RSS feed of a channel selected.
  * */
 @AndroidEntryPoint
-class RssFeedFragment : Fragment() {
+class RssFeedFragment : Fragment(), FeedItemClickListener {
 
     private var binding: FragmentRssFeedBinding? = null
     private val args: RssFeedFragmentArgs by navArgs()
@@ -69,6 +72,7 @@ class RssFeedFragment : Fragment() {
             RecyclerView.VERTICAL,
             false
         )
+        feedAdapter.mListener = this
         binding?.rssFeedList?.adapter = feedAdapter
     }
 
@@ -96,6 +100,19 @@ class RssFeedFragment : Fragment() {
 
         })
 
+    }
+
+    override fun openItem(item: FeedItem, itemView: View) {
+        exitTransition = MaterialElevationScale(false).apply {
+            duration = resources.getInteger(R.integer.rss_reader_motion_duration_large).toLong()
+        }
+        reenterTransition = MaterialElevationScale(true).apply {
+            duration = resources.getInteger(R.integer.rss_reader_motion_duration_large).toLong()
+        }
+        val feedToItemDescriptionTransition = getString(R.string.feed_to_description_transition)
+        val extras = FragmentNavigatorExtras(itemView to feedToItemDescriptionTransition)
+        val directions = NavigationGraphDirections.feedToItem(item)
+        findNavController().navigate(directions, extras)
     }
 
 }

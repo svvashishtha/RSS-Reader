@@ -16,8 +16,7 @@ class RssFeedItemViewHolder(itemView: View, private val svgDecoder: SvgDecoder) 
     private val description = itemView.findViewById<MaterialTextView>(R.id.description)
     private val publishDate = itemView.findViewById<MaterialTextView>(R.id.publish_date)
     private val bodyImage = itemView.findViewById<ImageView>(R.id.body_image)
-
-    fun bind(item: FeedItem) {
+    fun bind(item: FeedItem, mListener :FeedItemClickListener?) {
 
         title.text = item.title
         description.text = item.description
@@ -30,6 +29,9 @@ class RssFeedItemViewHolder(itemView: View, private val svgDecoder: SvgDecoder) 
             } else {
                 bodyImage.load(url)
             }
+        }
+        itemView.setOnClickListener {
+            mListener?.openItem(item, itemView)
         }
     }
 }
