@@ -85,14 +85,17 @@ class RssFeedFragment : Fragment(), FeedItemClickListener {
         viewModel.feed.observe(viewLifecycleOwner, Observer { feedAPiResponse ->
             when (feedAPiResponse.apiStatus) {
                 ApiStatus.ERROR -> {
-
+                    binding?.shimmerViewContainer?.stopShimmer()
                 }
                 ApiStatus.SUCCESS -> {
+                    binding?.shimmerViewContainer?.stopShimmer()
+                    binding?.shimmerViewContainer?.hideShimmer()
                     feedAPiResponse.data?.itemList?.let {
                         feedAdapter.submitList(it)
                     }
                 }
                 ApiStatus.LOADING -> {
+                    binding?.shimmerViewContainer?.startShimmer()
 
                 }
             }

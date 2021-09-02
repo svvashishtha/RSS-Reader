@@ -203,4 +203,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation 'com.firebaseui:firebase-ui-firestore:8.0.0'
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
 }
