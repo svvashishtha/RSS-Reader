@@ -12,6 +12,7 @@ import com.google.android.material.transition.MaterialElevationScale
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.rssreader.BuildConfig
 import com.rssreader.NavigationGraphDirections
 import com.rssreader.R
 import com.rssreader.databinding.ActivityMainBinding
@@ -44,18 +45,22 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
-                        Toast.makeText(
-                            baseContext, "signInAnonymously success.",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        if (BuildConfig.DEBUG) {
+                            Toast.makeText(
+                                baseContext, "signInAnonymously success.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                         val user = auth.currentUser
                         //TODO allow only paid users to add channels
                     } else {
                         // If sign in fails, display a message to the user.
-                        Toast.makeText(
-                            baseContext, "Authentication failed.",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        if (BuildConfig.DEBUG) {
+                            Toast.makeText(
+                                baseContext, "Authentication failed.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
                 }
         }
@@ -71,13 +76,13 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         }
 
         // Set a custom animation for showing and hiding the FAB
-        binding.fab.apply {
+        /*binding.fab.apply {
             setShowMotionSpecResource(R.animator.fab_show)
             setHideMotionSpecResource(R.animator.fab_hide)
             setOnClickListener {
                 navigateToCompose()
             }
-        }
+        }*/
     }
 
     private fun navigateToCompose() {
@@ -115,20 +120,20 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
     }
 
     private fun setUpActivityForRssFeesFragment() {
-        binding.run {
+       /* binding.run {
             binding.fab.hide()
-        }
+        }*/
     }
 
     private fun setUpActivityForMyFeeds() {
-        binding.run {
+        /*binding.run {
             binding.fab.show()
-        }
+        }*/
     }
 
     private fun setUpActivityForAddNewFeedFragment() {
-        binding.run {
+       /* binding.run {
             binding.fab.hide()
-        }
+        }*/
     }
 }

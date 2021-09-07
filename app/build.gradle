@@ -7,9 +7,18 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
 //adding this for Navigation safe arguments
 apply plugin: 'androidx.navigation.safeargs.kotlin'
+apply plugin: 'com.google.firebase.crashlytics'
 
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('/Users/zomato/Desktop/rss_reader_key')
+            storePassword 'rss_reader'
+            keyAlias 'release_key_rss'
+            keyPassword 'rss_reader'
+        }
+    }
     compileSdkVersion 30
 
     defaultConfig {
@@ -29,7 +38,7 @@ android {
                         "room.expandProjection": "true"]
             }
         }
-
+        signingConfig signingConfigs.debug
     }
 
     sourceSets {
@@ -60,7 +69,8 @@ android {
             testCoverageEnabled true
         }
         release {
-            minifyEnabled false
+            minifyEnabled true
+            debuggable true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -81,7 +91,6 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
-    testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 //for navigation
@@ -198,9 +207,10 @@ dependencies {
     debugImplementation("androidx.test:rules:$androidXTestRulesVersion")
     debugImplementation("androidx.test:runner:1.4.0")
 
-    implementation platform('com.google.firebase:firebase-bom:28.3.1')
+    implementation platform('com.google.firebase:firebase-bom:28.4.0')
     implementation 'com.google.firebase:firebase-firestore-ktx'
     implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation 'com.firebaseui:firebase-ui-firestore:8.0.0'
     implementation 'com.facebook.shimmer:shimmer:0.5.0'

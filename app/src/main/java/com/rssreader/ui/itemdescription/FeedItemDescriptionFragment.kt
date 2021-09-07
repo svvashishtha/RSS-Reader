@@ -2,10 +2,11 @@ package com.rssreader.ui.itemdescription
 
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -13,7 +14,6 @@ import com.google.android.material.transition.MaterialContainerTransform
 import com.rssreader.R
 import com.rssreader.data.FeedItem
 import com.rssreader.databinding.FragmentFeedItemDescriptionBinding
-import com.rssreader.ui.feed.RssFeedFragmentArgs
 import com.rssreader.util.themeColor
 
 
@@ -47,7 +47,14 @@ class FeedItemDescriptionFragment : Fragment() {
             itemTitle.text = selectedItem.title?:""
             webview.loadUrl(selectedItem.link?:"")
             webview.settings.javaScriptEnabled = true
-
+            webview.webViewClient = object : WebViewClient() {
+                override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
+                    // do your handling codes here, which url is the requested url
+                    // probably you need to open that url rather than redirect:
+                    view.loadUrl(url)
+                    return true // then it is not handled by default action
+                }
+            }
         }
     }
 
