@@ -51,10 +51,10 @@
                 android:layout_marginStart="@dimen/dimen_12dp"
                 android:textAppearance="?attr/textAppearanceBody1"
                 android:textSize="@dimen/text_size_24"
-                app:layout_constraintBottom_toBottomOf="@id/close"
+                android:layout_marginTop="@dimen/dimen_18dp"
                 app:layout_constraintEnd_toEndOf="@id/guideline_end"
                 app:layout_constraintStart_toEndOf="@id/close"
-                app:layout_constraintTop_toTopOf="@id/close"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:text="Nasa Image of the Day" />
 
             <androidx.recyclerview.widget.RecyclerView
