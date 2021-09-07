@@ -48,11 +48,10 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
                             baseContext, "signInAnonymously success.",
                             Toast.LENGTH_SHORT
                         ).show()
-                        Log.d(TAG, "signInAnonymously:success")
                         val user = auth.currentUser
+                        //TODO allow only paid users to add channels
                     } else {
                         // If sign in fails, display a message to the user.
-                        Log.w(TAG, "signInAnonymously:failure", task.exception)
                         Toast.makeText(
                             baseContext, "Authentication failed.",
                             Toast.LENGTH_SHORT

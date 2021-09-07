@@ -42,7 +42,6 @@ class FeedItemDescriptionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d(TAG, selectedItem.toString())
         binding.run {
             close.setOnClickListener { findNavController().navigateUp() }
             itemTitle.text = selectedItem.title?:""
