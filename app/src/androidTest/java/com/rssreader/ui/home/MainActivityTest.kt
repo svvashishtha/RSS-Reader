@@ -12,7 +12,8 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import com.rssreader.R
-import com.rssreader.di.RepositoryModule
+import com.rssreader.layman.di.RepositoryModule
+import com.rssreader.layman.ui.home.MainActivity
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.UninstallModules

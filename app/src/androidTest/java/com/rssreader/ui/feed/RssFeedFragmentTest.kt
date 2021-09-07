@@ -13,10 +13,11 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
 import androidx.test.platform.app.InstrumentationRegistry
 import com.rssreader.R
-import com.rssreader.data.Channel
-import com.rssreader.di.RepositoryModule
+import com.rssreader.layman.data.Channel
+import com.rssreader.layman.di.RepositoryModule
 import com.rssreader.launchFragmentInHiltContainer
-import com.rssreader.util.SuggestedChannelProvider
+import com.rssreader.layman.ui.feed.RssFeedFragment
+import com.rssreader.layman.util.SuggestedChannelProvider
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.UninstallModules

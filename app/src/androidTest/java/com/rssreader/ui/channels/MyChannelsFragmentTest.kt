@@ -14,8 +14,11 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.rssreader.R
-import com.rssreader.di.RepositoryModule
+import com.rssreader.layman.di.RepositoryModule
 import com.rssreader.launchFragmentInHiltContainer
+import com.rssreader.layman.ui.channels.MyChannelRepository
+import com.rssreader.layman.ui.channels.MyChannelsFragment
+import com.rssreader.layman.ui.channels.PopularChannelViewHolder
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.UninstallModules

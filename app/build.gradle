@@ -22,7 +22,7 @@ android {
     compileSdkVersion 30
 
     defaultConfig {
-        applicationId "com.rssreader"
+        applicationId "com.rssreader.layman"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
@@ -70,7 +70,7 @@ android {
         }
         release {
             minifyEnabled true
-            debuggable true
+            debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

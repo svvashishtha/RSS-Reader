@@ -131,7 +131,7 @@
 # Gson specific classes
 -keep class sun.misc.Unsafe { *; }
 -keep class com.google.gson.stream.** { *; }
--keep class com.rssreader.data.* { *; }
+-keep class com.rssreader.layman.data.* { *; }
 ##---------------End: proguard configuration for Gson ----------
 
 ## Strip log classes for release build

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/addNewFeedFragment"
-        android:name="com.rssreader.ui.addChannel.AddNewChannelFragment"
+        android:name="com.rssreader.layman.ui.addChannel.AddNewChannelFragment"
         android:label="@string/add_new_channel"
         tools:layout="@layout/fragment_add_new_channel" >
         <argument
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/myFeedsFragment"
-        android:name="com.rssreader.ui.channels.MyChannelsFragment"
+        android:name="com.rssreader.layman.ui.channels.MyChannelsFragment"
         android:label="@string/my_channels"
         tools:layout="@layout/fragment_my_channels" >
         <action
@@ -26,21 +26,21 @@
     </fragment>
     <fragment
         android:id="@+id/feedItemDescriptionFragment"
-        android:name="com.rssreader.ui.itemdescription.FeedItemDescriptionFragment"
+        android:name="com.rssreader.layman.ui.itemdescription.FeedItemDescriptionFragment"
         android:label="@string/item_description"
         tools:layout="@layout/fragment_feed_item_description" >
         <argument
             android:name="item"
-            app:argType="com.rssreader.data.FeedItem" />
+            app:argType="com.rssreader.layman.data.FeedItem" />
     </fragment>
     <fragment
         android:id="@+id/rssFeedFragment"
-        android:name="com.rssreader.ui.feed.RssFeedFragment"
+        android:name="com.rssreader.layman.ui.feed.RssFeedFragment"
         android:label="@string/rss_feed"
         tools:layout="@layout/fragment_rss_feed" >
         <argument
             android:name="channel"
-            app:argType="com.rssreader.data.Channel" />
+            app:argType="com.rssreader.layman.data.Channel" />
         <action
             android:id="@+id/action_navigate_feed_to_item"
             app:destination="@id/feedItemDescriptionFragment"/>

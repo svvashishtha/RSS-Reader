@@ -1,11 +1,9 @@
 package com.rssreader.ui
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.rssreader.data.Channel
-import com.rssreader.network.ApiResponse
-import com.rssreader.ui.channels.MyChannelRepository
-import com.rssreader.util.SuggestedChannelProvider
+import com.rssreader.layman.data.Channel
+import com.rssreader.layman.network.ApiResponse
+import com.rssreader.layman.ui.channels.MyChannelRepository
+import com.rssreader.layman.util.SuggestedChannelProvider
 import javax.inject.Inject
 
 class FakeChannelRepository @Inject constructor() : MyChannelRepository {
